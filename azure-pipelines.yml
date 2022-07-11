@@ -23,8 +23,9 @@ stages:
           vmImage: $(vmImageName)
         steps:
           - task: MavenAuthenticate@0
+            displayName: 'Auth to FCI-FEED'
             inputs:
-              artifactsFeed: FCI-FEED
+              artifactsFeeds: FCI-FEED
           - task: Maven@3
             inputs:
               mavenPomFile: 'pom.xml'
@@ -33,6 +34,7 @@ stages:
               jdkVersionOption: '1.8'
               jdkArchitectureOpton: 'x64'
               publishJUnitResults: true
+              mavenFeedAuthenticate: true
               testResultsFiles: '**/surefire-reports/TEST-*.xml'
               goals: 'test'
 
