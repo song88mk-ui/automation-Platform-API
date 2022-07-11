@@ -15,6 +15,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <targetEnvironment>preprod</targetEnvironment>
   </properties>
 
   <dependencies>
@@ -98,7 +99,7 @@
         <configuration>
           <workingDir>${project.basedir}/src/main/groovy</workingDir>
           <reportPath>${project.build.testOutputDirectory}</reportPath>
-          <env>preprod</env>
+          <env>${targetEnvironment}</env>
           <tests>
             <directory>${project.basedir}/src/main/groovy</directory>
             <includes>
@@ -136,5 +137,20 @@
       </snapshots>
     </pluginRepository>
   </pluginRepositories>
+
+  <profiles>
+    <profile>
+      <id>preprod</id>
+      <properties>
+        <targetEnvironment>preprod</targetEnvironment>
+      </properties>
+    </profile>
+    <profile>
+      <id>prod</id>
+      <properties>
+        <targetEnvironment>production</targetEnvironment>
+      </properties>
+    </profile>
+  </profiles>
 
 </project>
