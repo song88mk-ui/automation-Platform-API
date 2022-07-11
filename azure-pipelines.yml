@@ -50,7 +50,8 @@ stages:
           - task: Maven@3
             inputs:
               mavenPomFile: 'pom.xml'
-              mavenOptions: '-Xmx2048m -Dmaven.repo.local=$(MAVEN_CACHE_FOLDER) -P$(targetEnvironment)'
+              mavenOptions: '-Xmx2048m -Dmaven.repo.local=$(MAVEN_CACHE_FOLDER)'
+              options: '-P$(targetEnvironment)'
               javaHomeOption: 'JDKVersion'
               jdkVersionOption: '1.8'
               jdkArchitectureOpton: 'x64'
