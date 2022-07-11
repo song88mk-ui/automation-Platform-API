@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.fsti.automation</groupId>
+  <artifactId>Platform-API-Automation</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>Platform-API-Automation</name>
+  <url>http://platform-api.song88.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.testingisdocumenting.webtau</groupId>
+      <artifactId>webtau-groovy</artifactId>
+      <version>1.48</version>
+    </dependency>
+    <dependency>
+      <groupId>org.testingisdocumenting.webtau</groupId>
+      <artifactId>webtau-junit4</artifactId>
+      <version>1.48</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.2.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.2.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.10.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.0.0-M7</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.2.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>3.0.0-M1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>3.0.0-M2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>4.0.0-M2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>3.3.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.testingisdocumenting.webtau</groupId>
+          <artifactId>webtau-maven-plugin</artifactId>
+          <version>1.48</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.testingisdocumenting.webtau</groupId>
+        <artifactId>webtau-maven-plugin</artifactId>
+        <version>1.48</version>
+        <executions>
+          <execution>
+            <phase>test</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <workingDir>${project.basedir}/src/main/groovy</workingDir>
+          <reportPath>${project.build.testOutputDirectory}</reportPath>
+          <env>preprod</env>
+          <tests>
+            <directory>${project.basedir}/src/main/groovy</directory>
+            <includes>
+              <include>scenarios/platform*.groovy</include>
+            </includes>
+          </tests>
+        </configuration>
+      </plugin>
+    </plugins>
+
+  </build>
+
+  <repositories>
+    <repository>
+      <id>FCI-FEED</id>
+      <url>https://pkgs.dev.azure.com/song88-fci/fci/_packaging/FCI-FEED/maven/v1</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>FCI-FEED</id>
+      <url>https://pkgs.dev.azure.com/song88-fci/fci/_packaging/FCI-FEED/maven/v1</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+
+</project>
