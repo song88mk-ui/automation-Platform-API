@@ -18,7 +18,7 @@ stages:
     displayName: Test
     jobs:
       - job: test
-        displayName: Test
+        displayName: Run Automation Tests
         pool:
           vmImage: $(vmImageName)
         steps:
@@ -35,6 +35,7 @@ stages:
               jdkArchitectureOpton: 'x64'
               publishJUnitResults: true
               mavenFeedAuthenticate: true
+              skipEffectivePom: true
               testResultsFiles: '**/surefire-reports/TEST-*.xml'
               goals: 'test'
 
