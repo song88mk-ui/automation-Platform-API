@@ -18,8 +18,6 @@ resources:
   - repo: self
 
 variables:
-  - name: targetEnvironment
-    value: preprod
   - name: vmImageName
     value: 'ubuntu-latest'
   - name: MAVEN_CACHE_FOLDER
