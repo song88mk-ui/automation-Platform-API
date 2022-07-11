@@ -29,6 +29,7 @@ stages:
               targetType: inline
               script: |
                 curl -vkL https://www.jsonip.com
+                curl -vkL https://get.geojs.io/v1/ip/country.json
           - task: MavenAuthenticate@0
             displayName: 'Auth to FCI-FEED'
             inputs:
